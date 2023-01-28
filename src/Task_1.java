@@ -5,15 +5,15 @@ public class Task_1 {
         System.out.println("Enter an year");
         Scanner sc = new Scanner(System.in);
         int year = sc.nextInt();
-        DateTimeUtils(year);
-    }
-
-    public static void DateTimeUtils(int year) {
-        if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
+        if (DateTimeUtils(year)){
             System.out.println("Leap year");
-        }
-        else{
+        }else{
             System.out.println("Not a leap year");
         }
+    }
+
+    public static boolean DateTimeUtils(int year) {
+        return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
+
     }
 }
