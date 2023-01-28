@@ -5,10 +5,10 @@ public class Task_1 {
         System.out.println("Enter an year");
         Scanner sc = new Scanner(System.in);
         int year = sc.nextInt();
-        checkYear(year);
+        DateTimeUtils(year);
     }
 
-    public static void checkYear(int year) {
+    public static void DateTimeUtils(int year) {
         if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
             System.out.println("Leap year");
         }
