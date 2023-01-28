@@ -9,7 +9,7 @@ public class Task_1 {
     }
 
     public static void DateTimeUtils(int year) {
-        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+        if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
             System.out.println("Leap year");
         }
         else{
