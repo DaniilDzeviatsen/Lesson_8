@@ -13,6 +13,9 @@ public class ArrayUtils {
     }
 
     public static double calculateAverage(int[] array) {
+        if (array.length <= 0) {
+            throw new IllegalArgumentException("введено некорректное значение");
+        }
         double sum = 0;
         for (int i = 0; i < array.length; i++) {
             sum = sum + array[i];
@@ -39,11 +42,16 @@ public class ArrayUtils {
             if (array[i] == num) {
                 return i;
             }
+
         }
         return -1;
+
     }
 
     public static int[] getPart(int[] array, int indexFrom, int indexTo) {
+        if (indexFrom > indexTo) {
+            throw new IllegalArgumentException("начальный индекс должен быть больше конечного, введите корректные значения");
+        }
         int subArrayLength = indexTo - indexFrom;
         int[] subArray = new int[subArrayLength];
 

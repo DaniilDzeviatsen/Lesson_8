@@ -5,9 +5,9 @@ public class DateTimeUtils {
         System.out.println("Enter an year");
         Scanner sc = new Scanner(System.in);
         int year = sc.nextInt();
-        if (dateTimeUtils(year)){
+        if (dateTimeUtils(year)) {
             System.out.println("Leap year");
-        }else{
+        } else {
             System.out.println("Not a leap year");
         }
     }
