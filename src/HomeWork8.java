@@ -7,7 +7,7 @@ public class HomeWork8 {
         System.out.println("Enter number of a Task");
         Scanner sc = new Scanner(System.in);
         int number = sc.nextInt();
-        if (number >= 7) {
+        if (number >= 7 || number < 1) {
             throw new IllegalArgumentException("Попридержи коней, тут не так много заданий");
         }
 
@@ -16,7 +16,7 @@ public class HomeWork8 {
                 System.out.println("Enter year");
                 int year = sc.nextInt();
                 System.out.println("The year is leap?");
-                System.out.println(DateTimeUtils.dateTimeUtils(year));
+                System.out.println(DateTimeUtils.isYearLeap(year));
                 break;
             case 2:
                 int[] array = UserInputUtils.createMassive();
@@ -29,7 +29,7 @@ public class HomeWork8 {
                 break;
             case 4:
                 int[] array3 = UserInputUtils.createMassive();
-                System.out.println(ArrayUtils.findNubmer(array3));
+                System.out.println(ArrayUtils.getNumIndex(array3));
                 break;
             case 5:
                 int[] array4 = UserInputUtils.createMassive();
