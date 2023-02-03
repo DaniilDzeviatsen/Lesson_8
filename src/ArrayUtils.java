@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class ArrayUtils {
     public static double calculateAverage(int[] array) {
         if (array.length < 0) {
@@ -22,10 +20,7 @@ public class ArrayUtils {
         return array;
     }
 
-    public static int getNumIndex(int[] array) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter number to find");
-        int num = sc.nextInt();
+    public static int getNumIndex(int[] array, int num) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == num) {
                 return i;
@@ -36,40 +31,30 @@ public class ArrayUtils {
 
     }
 
-    public static int[] getPart(int[] array, int indexFrom, int indexTo) {
-        if (indexFrom > indexTo || indexFrom < 0 || indexTo > array.length - 1) {
+    public static int[] getPart(int[] array, int indexFrom, int indexToExclusive) {
+        if (indexFrom > indexToExclusive || indexFrom < 0 || indexToExclusive > array.length) {
             throw new IllegalArgumentException("введены некорректные значения");
         }
-        int subArrayLength = indexTo - indexFrom;
+        int subArrayLength = indexToExclusive - indexFrom;
         int[] subArray = new int[subArrayLength];
 
-        for (int i = indexFrom, j = 0; (i < indexTo && j < subArrayLength); i++, j++) {
+        for (int i = indexFrom, j = 0; i < indexToExclusive; i++) {
             subArray[j] = array[i];
-
+            j++;
         }
         return subArray;
     }
 
-    public static int[] showPage(int[] array) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter page number");
-        int pageNum = sc.nextInt();
-        System.out.println("Enter number of elements on one page");
-        int numOfElements = sc.nextInt();
-        int[] subArray = new int[numOfElements];
-        if (pageNum * numOfElements <= array.length) {
-            for (int i = pageNum * numOfElements - numOfElements, k = 0; (i < pageNum * numOfElements && k < numOfElements); i++, k++) {
-
-                subArray[k] = array[i];
-            }
-            return subArray;
-        } else if (pageNum * numOfElements > array.length) {
-            int[] subArray2 = new int[numOfElements * pageNum - array.length];
-            for (int i = pageNum * numOfElements - numOfElements, k = 0; (i < array.length && k < numOfElements * pageNum - array.length); i++, k++) {
-                subArray2[k] = array[i];
-            }
-            return subArray2;
+    public static int[] showPage(int[] array, int pageNum, int numOfElements) {
+        if (array.length < (pageNum - 1) * numOfElements + 1 || pageNum < 1 || numOfElements < 1) {
+            throw new IllegalArgumentException("wrong page number");
         }
+        int indexFrom = (pageNum - 1) * numOfElements;
+        int indexToExclusive = pageNum * numOfElements;
+        if (indexToExclusive > array.length) {
+            indexToExclusive = array.length;
+        }
+        int[] subArray = getPart(array, indexFrom, indexToExclusive);
         return subArray;
 
 
